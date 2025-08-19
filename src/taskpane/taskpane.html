@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Import Data from Podium</title>
+  <link rel="stylesheet" href="taskpane.css" />
+
+  <!-- Office.js must load before your code -->
+  <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+
+  <!-- XLSX for reading local Excel files -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+</head>
+<body>
+  <header class="header">
+    <button id="menuBtn" class="menu-btn" aria-label="Menu">☰</button>
+    <h1>Import data from Podium</h1>
+  </header>
+
+  <div class="form-group">
+    <label for="project">Project</label>
+    <select id="project">
+      <option value="ind_test">ind_test</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="scenario">Scenario</label>
+    <select id="scenario">
+      <option value="Scenario 9">Scenario 9</option>
+    </select>
+    <a href="#" class="link">Open in Podium</a>
+  </div>
+
+  <div class="form-group">
+    <label for="dataToImport">Data to import</label>
+    <select id="dataToImport">
+      <option value="MEPF Plant Room">MEPF Plant Room</option>
+    </select>
+  </div>
+
+  <div class="parameters">
+    <div class="parameters-header">
+      <span id="paramTitle">Parameters</span>
+      <button id="editParams" class="edit-btn" disabled>Edit</button>
+    </div>
+    <ul id="paramList" aria-live="polite"></ul>
+  </div>
+
+  <!-- Hidden file input -->
+  <input id="filePicker" type="file" accept=".xlsx,.xls,.csv" style="display:none" />
+  <div id="fileStatus" class="status"></div>
+  <button id="importBtn" class="import-btn">Import Data</button>
+
+  <!-- Modal for editing columns -->
+  <div id="editModal" class="modal">
+    <div class="modal-header">Select and order parameters to import</div>
+    <ul id="columnEditor" class="modal-columns"></ul>
+
+    <div class="modal-footer">
+      <button id="closeModal" class="btn btn-cancel">Cancel</button>
+      <button id="fillDataBtn" class="btn btn-primary">Save</button>
+    </div>
+  </div>
+
+</body>
+</html>
